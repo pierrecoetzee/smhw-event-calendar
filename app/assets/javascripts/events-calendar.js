@@ -1,3 +1,12 @@
+let data_store = null;
+
+$(window).on('resize',function(e){
+  if (data_store){
+  	$.fn.clear_events()
+  	set_calendar_events(data_store)
+  }
+})
+
 $.fn.clear_events = function(){
   $('.event').remove()
 }
@@ -5,7 +14,8 @@ $.fn.clear_events = function(){
 $.fn.check_for_events = function getEvents(){
 	$.ajax({type: 'GET', url: 'weekly_events', dataType: 'json'})
 	.success(function(data){
-    $('table').clear_events()
+		data_store = data
+    $.fn.clear_events()
 		set_calendar_events(data)
 	})
 	.fail(function(error_data){
