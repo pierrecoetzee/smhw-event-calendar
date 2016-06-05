@@ -1,0 +1,10 @@
+if ($("#new_dialog:visible").length == 0){
+	$("#new_dialog").modal();
+	$("#new_dialog .modal-body").html("<%= escape_javascript(render partial: 'form', locals: { event: @event } ) %>"); 
+}
+else{
+	$("#new_dialog").modal('hide');
+	$.fn.clear_events();
+	$.fn.check_for_events();
+}
+
