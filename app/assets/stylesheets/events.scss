@@ -1,3 +1,83 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin cell-borders{
+	border: 1.5px solid #CCC;
+}
+
+.center{
+	 text-align:center;
+}
+
+@media (min-width: 1200px) {
+	 [class*="span"] {
+    float: left;
+    margin-left: 0px;
+  }
+
+  .span2{
+    width:202px;
+  }
+}
+
+.table{
+	margin-bottom: 0 !important;
+}
+
+.table > tbody > tr > td {
+	padding: 0px !important;
+}
+
+.calendar{
+	
+	margin: 10px;
+
+  table th{
+    text-align:center;
+    color: #646C77;
+  }
+	
+	@include cell-borders;
+
+	.day_name{
+		border: 1px solid #CCC;
+		float: left;
+    height: 100px;
+    min-width: 120px;
+    text-align: center;
+    @include cell-borders;
+	}
+
+	.sub-header{
+	  font-size: 15px;
+	  font-weight: 300;
+	}
+
+	.content{
+	  height: 180px;
+	}
+
+	.day{
+
+		font-size: 18px;
+		color: #656D78;
+		font-family: sans-serif;
+
+		@include cell-borders;
+		border-top: none;
+
+		div{
+		  margin: 5px 0;
+		  font-size:13px;
+		  color: #69707B;
+		  border-bottom: 0.5px solid #CCC;
+		}
+	}
+
+	.event{
+	  position: absolute;
+    height: auto;
+    background: orange;
+	}
+}
