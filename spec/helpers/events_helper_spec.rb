@@ -1,15 +1,22 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the EventsHelper. For example:
-#
-# describe EventsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe EventsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe EventsHelper do
+  describe '#error_for?' do 
+    context 'when the the event is invalid' do 
+      it 'returns true' do 
+        @event = build(:event, :invalid)
+        @event.save
+        expect(helper.error_for?(:start_date)).to be
+      end
+    end
+
+    context 'when the the event is valid' do 
+      it 'returns false' do 
+        
+        @event = create(:event)
+        
+        expect(helper.error_for?(:start_date)).to be(false)
+      end
+    end
+  end
 end
